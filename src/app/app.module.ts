@@ -7,14 +7,16 @@ import { ItemListComponent } from './item-list/item-list.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { RouterModule } from '@angular/router';
 import { AnimalFormComponent } from './animal-form/animal-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmployeeFormComponent } from './employee-form/employee-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemListComponent,
     EmployeeListComponent,
-    AnimalFormComponent
+    AnimalFormComponent,
+    EmployeeFormComponent
   ],
   imports: [
     BrowserModule,
@@ -23,8 +25,10 @@ import { FormsModule } from '@angular/forms';
       {path: 'employee-list', component: EmployeeListComponent},
     ]),
     AppRoutingModule,
-    //import formmodule when doing form
-    FormsModule
+    //import form module when doing form
+    FormsModule,
+    //import when doing reactive forms
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

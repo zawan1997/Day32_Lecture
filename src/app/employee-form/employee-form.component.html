@@ -1,0 +1,60 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="" formControlName="name"
+                aria-describedby="helpId" required [ngClass]="{'is-invalid' : submitted && form.get('name')?.errors}">
+            <small id="helpId" class="text-muted">Enter your Full name</small>
+            <div *ngIf="submitted && form.get('name')?.errors" class="invalid feedback">
+                <div *ngIf="form.get('name')?.hasError('required')">
+                    Name is Required. (Mandatory field)
+                </div>
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="" formControlName="email"
+                aria-describedby="helpId" required email
+                [ngClass]="{'is-invalid' : submitted && form.get('email')?.errors}">
+            <small id="helpId" class="text-muted">Enter your Email</small>
+            <div *ngIf="submitted && form.get('email')?.errors" class="invalid feedback">
+                <div *ngIf="form.get('email')?.hasError('required')">
+                    Email is required. (Mandatory field)
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" id="username" class="form-control" placeholder=""
+                formControlName="username" aria-describedby="helpId"
+                [ngClass]="{'is-invalid' : submitted && form.get('username')?.errors}">
+            <small id="helpId" class="text-muted">Enter your Username</small>
+            <div *ngIf="submitted && form.get('username')?.errors" class="invalid feedback">
+                <div *ngIf="form.get('username')?.hasError('required')">
+                    Username is required. (Mandatory field)
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" id="password" class="form-control" placeholder=""
+                formControlName="password" aria-describedby="helpId"
+                [ngClass]="{'is-invalid' : submitted && form.get('password')?.errors}">
+            <small id="helpId" class="text-muted">Enter your password</small>
+            <div *ngIf="submitted && form.get('password')?.errors" class="invalid feedback">
+                <div *ngIf="form.get('password')?.hasError('required')">
+                    Password is required. (Mandatory field)
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" (click)="onReset()">Clear</button>
+
+    </form>
+</div>
