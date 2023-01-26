@@ -1,0 +1,61 @@
+<div class="container">
+    <h2>Create New Animal</h2>
+
+
+    <form #animalForm="ngForm" (ngSubmit)="animalForm.form.valid && onSubmit(animalForm)" novalidate>
+
+        <div class="mb-3">
+            <label for="id" class="form-label">ID</label>
+            <input type="number" name="id" id="id" class="form-control" placeholder="Unique ID" required #id="ngModel"
+                ngModel [ngClass]="{'is-invalid': animalForm.submitted && id.errors}">
+            <div class="invalid feedback">Please include ID</div>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Animal name" required
+                #name="ngModel" ngModel [ngClass]="{'is-invalid': animalForm.submitted && name.errors}">
+            <div *ngIf="animalForm.submitted && name.errors" class="invalid feedback">
+                <div *ngIf="name.errors['required']">
+                    Animal name is required. (Mandatory field)
+                </div>
+                <div *ngIf="name.errors['minlength']">
+                    Animal name must be at least 3 characters
+                </div>
+                <div *ngIf="name.errors['maxlength']">
+                    Animal name cannot be more than 20 characters
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <label for="lifespan" class="form-label">Lifespan</label>
+            <input type="number" name="lifespan" id="lifespan" class="form-control" placeholder="Years" required
+                #lifespan="ngModel" ngModel [ngClass]="{'is-invalid': animalForm.submitted && lifespan.errors}">
+            <div class="invalid feedback">Please include Lifespan</div>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Email" required email
+                #email="ngModel" ngModel [ngClass]="{'is-invalid': animalForm.submitted && email.errors}">
+            <div *ngIf="animalForm.submitted && email.errors" class="invalid-feedback">
+
+                <div *ngIf="email.errors['required']">
+                    Email required
+                </div>
+                <div *ngIf="email.errors['email']">
+                    Write an Email
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary"> Submit</button>
+
+        <button type="button" class="btn btn-secondary" (click)="onReset(animalForm)">Clear</button>
+    </form>
+</div>
